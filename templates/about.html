@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sobre | Anselmo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* RESET E ESTILO BASE */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #000;
+      color: #fff;
+      line-height: 1.8;
+      font-size: 18px;
+    }
+
+    /* NAVBAR */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.2rem 2rem;
+      background-color: #111;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: bold;
+      font-size: 1.2rem;
+      letter-spacing: 1px;
+    }
+
+    .logo img {
+      height: 40px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: #00ffff;
+    }
+
+    .menu-icon {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 5px;
+    }
+
+    .menu-icon span {
+      width: 25px;
+      height: 3px;
+      background: white;
+    }
+
+    /* CONTEÚDO PRINCIPAL */
+    .box,
+    .extra {
+      padding: 4rem 2rem;
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .box h1,
+    .extra h2 {
+      font-size: 2.8rem;
+      color: #00ffff;
+      margin-bottom: 1.5rem;
+      font-weight: 700;
+    }
+
+    .box p,
+    .extra p {
+      font-size: 1.2rem;
+      color: #ccc;
+      line-height: 1.9;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    section.extra {
+      margin-top: 3rem;
+      border-top: 1px solid #222;
+    }
+
+    /* RODAPÉ */
+    footer {
+      background: #111;
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.95rem;
+      color: #888;
+      margin-top: 3rem;
+    }
+
+    /* RESPONSIVO */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        right: 0;
+        flex-direction: column;
+        background: #111;
+        width: 100%;
+        padding: 1rem;
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .menu-icon {
+        display: flex;
+      }
+
+      .box h1,
+      .extra h2 {
+        font-size: 2rem;
+      }
+
+      .box p,
+      .extra p {
+        font-size: 1.05rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header>
+    <nav class="navbar">
+      <div class="logo">
+        <img src="/static/zyan-k0g1e.png" alt="Logo" />
+        <span>ANSELMO</span>
+      </div>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="{{ url_for('home') }}">Início</a></li>
+        <li><a href="{{ url_for('about') }}">Sobre</a></li>
+        <li><a href="{{ url_for('services') }}">Serviços</a></li>
+        <li><a href="{{ url_for('projects') }}">Projetos</a></li>
+        <li><a href="{{ url_for('blog') }}">Blog</a></li>
+        <li><a href="{{ url_for('contact') }}">Contato</a></li>
+      </ul>
+
+      <div class="menu-icon" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </nav>
+  </header>
+
+  <!-- CONTEÚDO -->
+  <main>
+    <section class="box">
+      <h1>Sobre Mim</h1>
+      <p>Olá! Sou Anselmo, estudante de Engenharia e desenvolvedor Frontend. Estou aprendendo Python e sou apaixonado por tecnologia e design de interfaces. Tenho experiência com HTML, CSS, JavaScript e estou estudando Flask para criar projetos web modernos e funcionais.</p>
+    </section>
+
+    <section class="extra">
+      <h2>Minhas Habilidades</h2>
+      <p>Trabalho com ferramentas como Figma, VS Code, Git e GitHub. Tenho foco em responsividade, boas práticas e interfaces que oferecem uma experiência envolvente ao usuário.</p>
+    </section>
+
+    <section class="extra">
+      <h2>Meus Objetivos</h2>
+      <p>Quero evoluir como desenvolvedor, contribuir com projetos reais, participar de hackathons e ajudar a comunidade de programação em Moçambique a crescer. Estou também desenvolvendo plataformas como Lumapay e KutanaEvents.</p>
+    </section>
+  </main>
+
+  <!-- RODAPÉ -->
+  <footer>
+    © 2025 Anselmo Dora Bistiro · Todos os direitos reservados.
+  </footer>
+
+  <!-- SCRIPT PARA MENU MOBILE -->
+  <script>
+    function toggleMenu() {
+      document.getElementById("navLinks").classList.toggle("active");
+    }
+  </script>
+</body>
+</html>

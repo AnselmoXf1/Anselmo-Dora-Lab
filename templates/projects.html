@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projetos | Anselmo</title>
+  <link rel="stylesheet" href="/static/style.css" />
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #000;
+      color: #fff;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background-color: #111;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .logo img {
+      height: 40px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .nav-links a:hover {
+      color: #00ffff;
+    }
+
+    .menu-icon {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 5px;
+    }
+
+    .menu-icon span {
+      width: 25px;
+      height: 3px;
+      background: white;
+    }
+
+    .box {
+      padding: 3rem 2rem;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .box h1 {
+      font-size: 2.5rem;
+      color: #00ffff;
+      margin-bottom: 1rem;
+    }
+
+    .box p {
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+    }
+
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+
+    .project-card {
+      background: #111;
+      padding: 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(0, 255, 255, 0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .project-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 25px rgba(0, 255, 255, 0.3);
+    }
+
+    .project-card h3 {
+      color: #00ffff;
+      margin-bottom: 0.5rem;
+    }
+
+    .project-card p {
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+
+    footer {
+      background: #111;
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.9rem;
+      margin-top: 3rem;
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        right: 0;
+        flex-direction: column;
+        background: #111;
+        width: 100%;
+        padding: 1rem;
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .menu-icon {
+        display: flex;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <div class="logo">
+        <img src="/static/zyan-k0g1e.png" alt="Logo" />
+        <span>ANSELMO</span>
+      </div>
+     <ul class="nav-links" id="navLinks">
+    <li><a href="{{ url_for('home') }}">Início</a></li>
+    <li><a href="{{ url_for('about') }}">Sobre</a></li>
+    <li><a href="{{ url_for('services') }}">Serviços</a></li>
+    <li><a href="{{ url_for('projects') }}">Projetos</a></li>
+    <li><a href="{{ url_for('blog') }}">Blog</a></li>
+    <li><a href="{{ url_for('contact') }}">Contato</a></li>
+</ul>
+
+      <div class="menu-icon" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="box">
+      <h1>Projetos</h1>
+      <p>Veja alguns dos meus projetos de desenvolvimento e design.</p>
+
+      <div class="projects">
+        <div class="project-card">
+          <h3>Portfólio Profissional</h3>
+          <p>Site moderno criado com HTML, CSS e JS, focado em apresentar habilidades e projetos pessoais.</p>
+        </div>
+        <div class="project-card">
+          <h3>KutanaEvents</h3>
+          <p>Plataforma de criação e venda de ingressos para eventos, com confirmação via WhatsApp e integração ao M-Pesa.</p>
+        </div>
+        <div class="project-card">
+          <h3>Lumapay</h3>
+          <p>Sistema de pagamentos local para eventos com gerenciamento simples de usuários e estatísticas de vendas.</p>
+        </div>
+        <div class="project-card">
+          <h3>Blog Minimalista</h3>
+          <p>Blog limpo e responsivo com foco em conteúdo escrito e SEO, desenvolvido com Flask e SQLite.</p>
+        </div>
+        <div class="project-card">
+          <h3>Site de Barbearia</h3>
+          <p>Painel para barbearias com agendamento online, gerência de clientes e presença em eventos de tecnologia.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © 2025 Anselmo Dora Bistiro · Todos os direitos reservados.
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById("navLinks").classList.toggle("active");
+    }
+  </script>
+</body>
+</html>

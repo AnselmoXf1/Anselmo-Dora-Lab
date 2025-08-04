@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Anselmo | Portfólio</title>
+  <link rel="stylesheet" href="/static/style.css" />
+  <style>
+    /* RESET + BASE */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #000;
+      color: #fff;
+      font-size: clamp(1rem, 1vw + 0.5rem, 1.2rem);
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* NAVBAR */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background-color: #111;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: bold;
+    }
+
+    .logo img {
+      height: 40px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+      transition: all 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: #00ffff;
+    }
+
+    .menu-icon {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 5px;
+    }
+
+    .menu-icon span {
+      width: 25px;
+      height: 3px;
+      background: white;
+      border-radius: 2px;
+    }
+
+    /* HERO */
+    .hero,
+    section {
+      padding: 3rem 2rem;
+    }
+
+    .hero {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      background-color: #000;
+    }
+
+    .hero-text {
+      flex: 1;
+      max-width: 600px;
+    }
+
+    .hero h1 {
+      font-size: clamp(2rem, 4vw, 3rem);
+    }
+
+    .hero h2 {
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      font-weight: 500;
+    }
+
+    .highlight {
+      color: #00ffff;
+    }
+
+    .hero-actions .btn {
+      display: inline-block;
+      margin-right: 1rem;
+      margin-top: 1rem;
+      padding: 0.7rem 1.2rem;
+      background: #00ffff;
+      color: #000;
+      border-radius: 5px;
+      font-weight: bold;
+      transition: background 0.3s ease;
+    }
+
+    .hero-actions .btn:hover {
+      background: #00cccc;
+    }
+
+    .hero-img {
+      flex: 1;
+      text-align: center;
+    }
+
+    .hero-img img {
+      width: 100%;
+      max-width: 320px;
+      height: auto;
+    }
+
+    section h2 {
+      color: #00ffff;
+      font-size: 2rem;
+       text-align: center;
+      margin-bottom: 1rem;
+    }
+
+    section p {
+      max-width: 700px;
+      margin-bottom: 2rem;
+    }
+
+    footer {
+      background: #111;
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.9rem;
+      margin-top: 2rem;
+    }
+
+    /* RESPONSIVO */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        right: 0;
+        flex-direction: column;
+        background: #111;
+        width: 100%;
+        padding: 1rem;
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .menu-icon {
+        display: flex;
+      }
+
+      .hero {
+        flex-direction: column-reverse;
+        text-align: center;
+        gap: 2rem;
+      }
+
+      .hero-text,
+      .hero-img {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <div class="logo">
+        <img src="/static/zyan-k0g1e.png" alt="Logo" />
+        <span>ANSELMO</span>
+      </div>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="{{ url_for('home') }}">Início</a></li>
+        <li><a href="{{ url_for('about') }}">Sobre</a></li>
+        <li><a href="{{ url_for('services') }}">Serviços</a></li>
+        <li><a href="{{ url_for('projects') }}">Projetos</a></li>
+        <li><a href="{{ url_for('blog') }}">Blog</a></li>
+        <li><a href="{{ url_for('contact') }}">Contato</a></li>
+      </ul>
+
+      <div class="menu-icon" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="hero-text">
+        <h1>OLÁ, SOU ANSELMO D. BISTIRO !</h1>
+        <h2>FRONTEND <span class="highlight">PLAYER</span></h2>
+        <p>Sou estudante de Engenharia Informatica e Tecnologias , desenvolvedor Frontend aprendendo Python. Apaixonado por criar experiências digitais intuitivas e envolventes.</p>
+        <div class="hero-actions">
+          <a href="/cv/CV_Anselmo_Dora_Bistiro.pdf" class="btn" download>Baixar CV</a>
+          <a href="#" class="btn video-btn"><span class="play-icon">▶</span> Assistir Vídeo</a>
+        </div>
+      </div>
+      <div class="hero-img">
+        <img src="/static/zyan-k0g1e.jpg" alt="Foto de Anselmo" />
+      </div>
+    </section>
+
+    <section id="sobre">
+      <h2>Sobre Mim</h2>
+      <p>Sou um desenvolvedor focado em frontend, apaixonado por transformar ideias em realidade com código. Trabalho com HTML, CSS, JavaScript e estou aprendendo Python e frameworks modernos.</p>
+    </section>
+
+    <section id="projetos">
+      <h2>Projetos Recentes</h2>
+      <p>• Portfolio moderno<br>• Sistema de eventos<br>• Dashboard com Flask + Tailwind<br>• Página de blog pessoal</p>
+    </section>
+
+    <section id="servicos">
+      <h2>Serviços</h2>
+      <p>• Criação de Sites Responsivos<br>• Interfaces Web com Animações<br>• Landing Pages para Produtos<br>• Integrações com APIs</p>
+    </section>
+
+    <section id="contato">
+      <h2>Contato</h2>
+      <p>Email: anselmo@example.com<br>WhatsApp: +258 84 xxx xxxx<br>Localização: Moçambique</p>
+    </section>
+  </main>
+
+  <footer>
+    © 2025 Anselmo Dora Bistiro · Todos os direitos reservados.
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById("navLinks");
+      menu.classList.toggle("active");
+    }
+  </script>
+</body>
+</html>

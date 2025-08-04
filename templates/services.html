@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Serviços | Anselmo</title>
+  <link rel="stylesheet" href="/static/style.css" />
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #000;
+      color: #fff;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background-color: #111;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .logo img {
+      height: 40px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .nav-links a:hover {
+      color: #00ffff;
+    }
+
+    .menu-icon {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 5px;
+    }
+
+    .menu-icon span {
+      width: 25px;
+      height: 3px;
+      background: white;
+    }
+
+    .box {
+      padding: 3rem 2rem;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .box h1 {
+      font-size: 2.5rem;
+      color: #00ffff;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+
+    .service-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .service-card {
+      background: #111;
+      padding: 1rem;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(0, 255, 255, 0.1);
+      transition: transform 0.3s;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .service-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 25px rgba(0, 255, 255, 0.3);
+    }
+
+    .service-card img {
+      width: 80px;
+      height: 80px;
+      object-fit: contain;
+      margin-bottom: 1rem;
+      filter: brightness(0) invert(1); /* para imagens escuras ficarem claras */
+    }
+
+    .service-card h3 {
+      color: #00ffff;
+      margin-bottom: 0.5rem;
+    }
+
+    .service-card p {
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+
+    footer {
+      background: #111;
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.9rem;
+      margin-top: 3rem;
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        right: 0;
+        flex-direction: column;
+        background: #111;
+        width: 100%;
+        padding: 1rem;
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .menu-icon {
+        display: flex;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <div class="logo">
+        <img src="/static/zyan-k0g1e.png" alt="Logo" />
+        <span>ANSELMO</span>
+      </div>
+    <ul class="nav-links" id="navLinks">
+    <li><a href="{{ url_for('home') }}">Início</a></li>
+    <li><a href="{{ url_for('about') }}">Sobre</a></li>
+    <li><a href="{{ url_for('services') }}">Serviços</a></li>
+    <li><a href="{{ url_for('projects') }}">Projetos</a></li>
+    <li><a href="{{ url_for('blog') }}">Blog</a></li>
+    <li><a href="{{ url_for('contact') }}">Contato</a></li>
+</ul>
+
+      <div class="menu-icon" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="box">
+      <h1>Serviços</h1>
+      <div class="service-list">
+        <div class="service-card">
+          <img src="/static/images/frontend.png" alt="Desenvolvimento Frontend" />
+          <h3>Desenvolvimento Frontend</h3>
+          <p>Criação de interfaces modernas, acessíveis e responsivas com HTML, CSS, JavaScript e frameworks como React.</p>
+        </div>
+        <div class="service-card">
+          <img src="/static/images/design.png" alt="Design de Interfaces" />
+          <h3>Design de Interfaces</h3>
+          <p>Desenvolvimento de protótipos com Figma, foco em UX/UI para entregar experiências agradáveis ao usuário.</p>
+        </div>
+        <div class="service-card">
+          <img src="/static/images/responsive.png" alt="Sites Responsivos" />
+          <h3>Sites Responsivos</h3>
+          <p>Sites que funcionam perfeitamente em qualquer dispositivo, com otimização para desempenho e SEO.</p>
+        </div>
+        <div class="service-card">
+          <img src="/static/images/landingpage.png" alt="Landing Pages" />
+          <h3>Landing Pages</h3>
+          <p>Páginas otimizadas para conversão de leads, ideal para divulgação de produtos, serviços ou eventos.</p>
+        </div>
+        <div class="service-card">
+          <img src="/static/images/portfolio.png" alt="Portfólios Pessoais" />
+          <h3>Portfólios Pessoais</h3>
+          <p>Criação de portfólios profissionais para desenvolvedores, designers ou freelancers.</p>
+        </div>
+        <div class="service-card">
+          <img src="/static/images/consultoria.png" alt="Consultoria Técnica" />
+          <h3>Consultoria Técnica</h3>
+          <p>Ajuda na escolha de tecnologias, estruturação de projetos e boas práticas de desenvolvimento.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © 2025 Anselmo Dora Bistiro · Todos os direitos reservados.
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById("navLinks").classList.toggle("active");
+    }
+  </script>
+</body>
+</html>
